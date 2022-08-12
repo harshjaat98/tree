@@ -23,7 +23,8 @@ $(call inherit-product, $(SRC_TARGET_DIR)/product/aosp_base.mk)
 PRODUCT_USE_DYNAMIC_PARTITIONS := true
 
 # Inherit from our custom product configuration
-$(call inherit-product, vendor/pb/config/common.mk)
+$(call inherit-product, vendor/omni/config/common.mk)
+$(call inherit-product, vendor/omni/config/gsm.mk)
 
 PRODUCT_COPY_FILES += $(call find-copy-subdir-files,*,$(DEVICE_PATH)/recovery/root,recovery/root) \
     $(DEVICE_PATH)/prebuilt/dtb:dtb.img
