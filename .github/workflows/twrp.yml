@@ -7,24 +7,24 @@ env:
   # (required) twrp manifest 
   MANIFEST: https://github.com/minimal-manifest-twrp/platform_manifest_twrp_omni.git
   # (required) manifest branch 
-  BRANCH: twrp-10.0-deprecated
+  BRANCH: twrp-9.0
   # (required) device codename i.e: sweet mojito.. 
   DEVICE: E7746
   # (required) device tree link with branch 
   DT_LINK: https://github.com/Hostfl/tree
   # (required) who made your phone ? 
   MANUFACTURER: micromax
-  # (required) recovery partiton = recovery, else (no recovery partition): boot *
+  # (required) recovery partiton = recovery, else (no recovery partition): boot 
   TARGET: recovery
   # dont change that
   IMAGE: image
   # (required) depend of device tree if you see twrp_"codename".mk use twrp
-  # else (omni_"codename".mk): omni *
+  # else (omni_"codename".mk): omni 
   OT: omni
   # dont change that
   SYM: _
   # (required) output format for some reason samsung phones need a custom mkbootimg
-  # which compress your recovery into .tar (default: .img / samsung + custom mkbootimg: .tar) *
+  # which compress your recovery into .tar (default: .img / samsung + custom mkbootimg: .tar) 
   FORMAT: .img
 
 jobs:
@@ -55,9 +55,8 @@ jobs:
        - name: Build twrp
          run: |
               cd work
-              . build/envsetup.sh && lunch $OT$SYM$DEVICE-eng && export ALLOW_MISSING_DEPENDENCIES=true && mka $TARGET$IMAGE -j20
-              zip twrp.zip /home/runner/work/Recovery_builder/Recovery_builder/work/out/target/product/$DEVICE/$BUILD$FORMAT
-
+              . build/envsetup.sh && lunch $OT$SYM$DEVICE-eng && export ALLOW_MISSING_DEPENDENCIES=true && mka $TARGET$IMAGE -j60
+              zip twrp.zip /home/runner/work/Recovery_builder/Recovery_builder/work/out/target/product/$DEVICE/$TARGET$FORMAT
        - name: Save in artifact
          uses: actions/upload-artifact@v3
          with:
