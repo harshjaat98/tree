@@ -1,4 +1,4 @@
-name: PBRP 
+name: Building PBRP 
 on:
   workflow_dispatch:
     inputs:
